@@ -30,6 +30,11 @@ ALLOWED_HOSTS = []
 SITE_ID = 1
 
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
+
+
 # Application definition
 
 INSTALLED_APPS = [
