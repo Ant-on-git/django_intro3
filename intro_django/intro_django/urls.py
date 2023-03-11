@@ -19,5 +19,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('pages/', include('django.contrib.flatpages.urls')),
+    path('pages/', include('django.contrib.flatpages.urls')),  # все flatpages располагаются по адресу pages/<страница>.
+                                                               # но конкретно в здесь в админке настроено что через /
+    path('products/', include('simpleapp.urls'))    # все страницы прилодения simpleapp располагаются по адресу
+                                                    # products/<адрес из simpleapp.urls>
 ]

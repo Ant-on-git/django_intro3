@@ -1,0 +1,62 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title_title %}
+    Products
+{% endblock title_title %}
+
+{% block content_title %}
+    <h2>Все товары</h2>
+{% endblock content_title %}
+
+{% block content_content %}
+
+    <!-- Перед товарами добавим форму для поиска -->
+    <form method="get">
+        {{ filter.form }} <!-- Форму от фильтров за нас сделает Django. А вот кнопку, увы, придётся делать самому -->
+        <input type="submit" value="Найти">
+    </form>
+
+    {% if products %} <!-- поменяем products на filter.qs, т.к. теперь мы забираем уже отобранную по каким-то параметрам информацию -->
+        {% for prod in products %}
+            <div class="col-lg-4 m-md-4">
+                <h2 class="badge bg-black fs-2">{{ prod.name }}</h2><br>
+                <span class="fs-5">цена:</span> <p class="badge bg-primary text-decoration-none link-light fs-5">{{ prod.price }}р.</p><br>
+                <p class="fs-6">в налиичиие: {{ prod.quantity }} шт.</p>
+                <p class="lead">{{ prod.description | truncatewords:20 }}</p>
+                <a class="text-decoration-none" href="{{ prod.pk }}">
+                    Подробнее
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-lg-12 mb-5">
+            <h2 class="h4 fw-bolder text-center">Товаров нет =(</h2>
+        </div>
+    {% endif %}
+
+{% endblock content_content %}
+
+{% block content_pagination %}
+    <!-- пагинация   -->
+
+    {% if is_paginated %}
+
+        <!-- Если доступна предыдущая страница, то даём ссылку на неё и самую первую страницу -->
+        {% if page_obj.has_previous %}
+            <a href="?{{ parametrs }}&page=1">первая</a>
+            <a href="?{{ parametrs }}&page={{ page_obj.previous_page_number }}">пред</a>
+        {% endif %}
+        <!-- parametrs содержт get запрос без страницы - нужен для правильной работы пагинатора при фильтрациии-->
+        <!-- Показываем только текущую страницу и сколько всего страниц -->
+        <span>страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+         <!-- Если есть следующая страница, то даём ссылку на неё и на самую последнюю страницу -->
+        {% if page_obj.has_next %}
+            <a href="?{{ parametrs }}&page={{ page_obj.next_page_number }}">след</a>
+            <a href="?{{ parametrs }}&page={{ page_obj.paginator.num_pages }}">последняя</a>
+        {% endif %}
+
+    {% endif %}
+
+{% endblock content_pagination %}
