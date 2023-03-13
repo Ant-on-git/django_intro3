@@ -1,0 +1,29 @@
+{% extends 'flatpages/default.html' %}
+
+
+{% block title_title %}
+    Удалить товар
+{% endblock title_title %}
+
+{% block content_title %}
+    <h1>Удалить товар</h1>
+{% endblock content_title %}
+
+{% block content_content %}
+
+    <h2>Удаляем данный товар?</h2>
+    <div class="col-lg-4 m-md-4">
+        <h2 class="badge bg-black fs-2">{{ product.name }}</h2><br>
+        <span class="fs-5">цена:</span> <p class="badge bg-primary text-decoration-none link-light fs-5">{{ product.price }}р.</p><br>
+        <p class="fs-6">в налиичиие: {{ product.quantity }} шт.</p>
+        <p class="lead">{{ product.description | truncatewords:20 }}</p>
+        <a class="text-decoration-none" href="{% url 'product_detail' product.pk %}">Подробнее</a>
+        <a class="text-decoration-none" href="{% url 'product_update' product.pk %}">Редактировать</a>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <input type="submit" value="Подтвердить удаление">
+    </form>
+
+
+{% endblock content_content %}

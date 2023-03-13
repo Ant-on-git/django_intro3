@@ -26,6 +26,7 @@
                         <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="/contacts/">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="/products/">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'product_create' %}">Добавить товар</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,7 +40,7 @@
             </div>
         </header>
         <!-- Content section-->
-        <section class="py-3">
+        <section class="py-3"  style="min-height:40vh">
             <div class="container my-3">
                 <div class="row justify-content-center">
 
@@ -50,23 +51,25 @@
                     {% block content_pagination %}
                     {% endblock content_pagination %}
                 </div>
+
             </div>
 
 
         </section>
-        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <p class="navbar-brand">Home work pages</p>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/HWpage1/">page1</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/HWpage2/">page2</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/HWpage3/">page3</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!--        Домашняя работа из начала Django по созданию flatpages    -->
+<!--        <div class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--            <div class="container">-->
+<!--                <p class="navbar-brand">Home work pages</p>-->
+<!--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
+<!--                <div class="collapse navbar-collapse" id="navbarSupportedContent2">-->
+<!--                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">-->
+<!--                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/HWpage1/">page1</a></li>-->
+<!--                        <li class="nav-item"><a class="nav-link" href="/HWpage2/">page2</a></li>-->
+<!--                        <li class="nav-item"><a class="nav-link" href="/HWpage3/">page3</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <!-- Image element - set the background image for the header in the line below-->
         <div class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/4ulffa6qoKA/1200x800')">
             <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->

@@ -12,6 +12,10 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.name}: {self.description[:20]}'
 
+    def get_absolute_url(self):  # добавим абсолютный путь, чтобы после создания нас перебрасывало на страницу с товаром
+        # делается для того, чтобы при создании объекта или переходе к его деталями не прописывать в каждом дженерике succes_url.
+        return f'/products/{self.pk}'  # Django просто будет перенаправлять вас по ссылке, которая возвращается с get_absolute_url метода модели.
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)

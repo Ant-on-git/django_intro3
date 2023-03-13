@@ -5,7 +5,7 @@
 {% endblock title_title %}
 
 {% block content_title %}
-    <h2>Все товары</h2>
+    <h1>Все товары</h1>
 {% endblock content_title %}
 
 {% block content_content %}
@@ -16,7 +16,7 @@
         <input type="submit" value="Найти">
     </form>
 
-    {% if products %} <!-- поменяем products на filter.qs, т.к. теперь мы забираем уже отобранную по каким-то параметрам информацию -->
+    {% if products %} <!-- поменяем products на filter.qs, т.к. теперь мы забираем уже отобранную по каким-то параметрам информацию но потом поменяем обратно, т.к. теперь отфильтрованные объекты хранятся в products (см get_context_data()) -->
         {% for prod in products %}
             <div class="col-lg-4 m-md-4">
                 <h2 class="badge bg-black fs-2">{{ prod.name }}</h2><br>
@@ -27,6 +27,8 @@
                     Подробнее
                     <i class="bi bi-arrow-right"></i>
                 </a>
+                <a class="text-decoration-none" href="{% url 'product_update' prod.pk %}">Редактировать</a>
+                <a class="text-decoration-none" href="{% url 'product_delete' prod.pk %}">Удалить</a>
             </div>
         {% endfor %}
     {% else %}
